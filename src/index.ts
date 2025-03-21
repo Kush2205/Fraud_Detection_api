@@ -1,8 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import {connectDB} from './db/index';
+import dotenv from 'dotenv';
 import cors from 'cors';
 
+dotenv.config();
+const PORT = process.env.PORT || 8080;
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -24,7 +27,7 @@ app.get('/fraud-trends' , async (req, res) => {
     res.json(fraudTrends);
 })
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 })
 
